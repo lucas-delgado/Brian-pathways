@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Diagrama Interactivo de Estructuras Cerebrales</title>
+  <meta charset="UTF-8">
+  <title>Diagrama Simple de Estructuras Cerebrales</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #fafafa;
     }
     #diagram-container {
       width: 100vw;
@@ -19,18 +19,18 @@
       width: 100%;
       height: 100%;
     }
-    /* Estilos de las estructuras */
-    .structure {
-      stroke: #333;
-      stroke-width: 1;
-      fill: #ddd;
-    }
+    /* Estilos para etiquetas y figuras */
     .label {
       font-size: 12px;
       fill: #000;
       pointer-events: none;
     }
-    /* Flechas de conexiones */
+    .structure {
+      stroke: #333;
+      stroke-width: 1;
+      fill: #ddd;
+    }
+    /* Flechas de colores */
     .arrow-sensorial {
       stroke: red;
       stroke-width: 2;
@@ -52,161 +52,175 @@
   </style>
 </head>
 <body>
-  <div id="diagram-container">
-    <svg id="brainDiagram" viewBox="0 0 1200 800">
-      <defs>
-        <!-- Definición de marcadores para las flechas -->
-        <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="red" />
-        </marker>
-        <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="blue" />
-        </marker>
-        <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="green" />
-        </marker>
-      </defs>
+<div id="diagram-container">
+  <svg id="brainDiagram" viewBox="0 0 1200 700">
+    <!-- Definiciones de marcadores para las flechas -->
+    <defs>
+      <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+      </marker>
+      <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="blue" />
+      </marker>
+      <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="green" />
+      </marker>
+    </defs>
 
-      <!-- Grupo principal para zoom y pan -->
-      <g id="zoomGroup">
-        <!-- ============================= -->
-        <!-- 1. TALAMO Y SUBDIVISIONES   -->
-        <!-- ============================= -->
-        <!-- Tálamo global -->
-        <ellipse cx="600" cy="400" rx="80" ry="60" fill="#e0f7fa" stroke="#333" stroke-width="1"></ellipse>
-        <text x="580" y="405" class="label">Tálamo</text>
+    <!-- Grupo principal para zoom y pan (si lo deseas usar con D3.js) -->
+    <g id="zoomGroup">
+      <!-- ==================================================== -->
+      <!-- COLUMNA 1 (IZQUIERDA): ÁREAS ASOCIATIVAS            -->
+      <!-- ==================================================== -->
+      <!-- Prefrontal (B9,10,46) -->
+      <rect x="50" y="100" width="120" height="40" class="structure" />
+      <text x="60" y="125" class="label">Prefrontal (B9,10,46)</text>
 
-        <!-- Núcleos sensitivos: VPL, VPM -->
-        <rect x="565" y="370" width="30" height="20" fill="#ffe0b2" stroke="#333"></rect>
-        <text x="570" y="385" class="label" font-size="10">VPL</text>
-        <rect x="605" y="370" width="30" height="20" fill="#ffe0b2" stroke="#333"></rect>
-        <text x="610" y="385" class="label" font-size="10">VPM</text>
+      <!-- TPO (Temporoparietooccipital) -->
+      <rect x="50" y="200" width="120" height="40" class="structure" fill="#eee"/>
+      <text x="55" y="225" class="label">TPO</text>
 
-        <!-- Núcleos asociativos: DM, Pulvinar -->
-        <rect x="565" y="425" width="30" height="20" fill="#c8e6c9" stroke="#333"></rect>
-        <text x="570" y="440" class="label" font-size="10">DM</text>
-        <rect x="605" y="425" width="40" height="20" fill="#c8e6c9" stroke="#333"></rect>
-        <text x="610" y="440" class="label" font-size="10">Pulvinar</text>
+      <!-- Áreas Límbicas -->
+      <rect x="50" y="300" width="120" height="40" class="structure" fill="#eee"/>
+      <text x="55" y="325" class="label">Áreas Límbicas</text>
 
-        <!-- Núcleos motores: VA, VL -->
-        <rect x="540" y="340" width="30" height="20" fill="#bbdefb" stroke="#333"></rect>
-        <text x="545" y="355" class="label" font-size="10">VA</text>
-        <rect x="630" y="340" width="30" height="20" fill="#bbdefb" stroke="#333"></rect>
-        <text x="635" y="355" class="label" font-size="10">VL</text>
+      <!-- ==================================================== -->
+      <!-- COLUMNA 2 (INTERMEDIA IZQ): OTRAS ESTRUCTURAS        -->
+      <!-- ==================================================== -->
+      <!-- Insula -->
+      <ellipse cx="250" cy="120" rx="30" ry="20" class="structure" />
+      <text x="235" y="125" class="label">Insula</text>
 
-        <!-- Subtálamo -->
-        <circle cx="670" cy="300" r="15" fill="#f8bbd0" stroke="#333" stroke-width="1"></circle>
-        <text x="660" y="305" class="label" font-size="10">Subtálamo</text>
+      <!-- Fornix -->
+      <ellipse cx="250" cy="220" rx="30" ry="15" class="structure" fill="#eee"/>
+      <text x="235" y="225" class="label">Fornix</text>
 
-        <!-- ============================= -->
-        <!-- 2. CUERPOS GENICULADOS       -->
-        <!-- ============================= -->
-        <circle cx="800" cy="150" r="20" fill="#ffccbc" stroke="#333" stroke-width="1"></circle>
-        <text x="785" y="155" class="label" font-size="10">Gen. Lat.</text>
-        <circle cx="850" cy="150" r="20" fill="#ffccbc" stroke="#333" stroke-width="1"></circle>
-        <text x="835" y="155" class="label" font-size="10">Gen. Med.</text>
+      <!-- Núcleo Basalis de Meynert -->
+      <ellipse cx="250" cy="320" rx="30" ry="15" class="structure" fill="#eee"/>
+      <text x="225" y="325" class="label">Meynert</text>
 
-        <!-- ============================= -->
-        <!-- 3. ESTRUCTURAS DE CONEXIÓN   -->
-        <!-- ============================= -->
-        <!-- Fornix (simple arco) -->
-        <path d="M300,430 C320,410 380,410 400,430" fill="none" stroke="#8d6e63" stroke-width="3"></path>
-        <text x="345" y="420" class="label" font-size="10">Fornix</text>
+      <!-- Subtálamo -->
+      <ellipse cx="250" cy="420" rx="30" ry="15" class="structure" fill="#eee"/>
+      <text x="230" y="425" class="label">Subtálamo</text>
 
-        <!-- Cuerpo Calloso (representación simple) -->
-        <rect x="200" y="100" width="150" height="30" fill="#d1c4e9" stroke="#333"></rect>
-        <text x="220" y="120" class="label">Cuerpo Calloso</text>
+      <!-- Núcleos Septales -->
+      <ellipse cx="250" cy="520" rx="30" ry="15" class="structure" fill="#eee"/>
+      <text x="235" y="525" class="label">Septal</text>
 
-        <!-- ============================= -->
-        <!-- 4. OTRAS ESTRUCTURAS         -->
-        <!-- ============================= -->
-        <!-- Epífisis -->
-        <rect x="750" y="200" width="30" height="30" fill="#d7ccc8" stroke="#333"></rect>
-        <text x="752" y="220" class="label" font-size="10">Epífisis</text>
+      <!-- ==================================================== -->
+      <!-- COLUMNA 3 (CENTRO): TÁLAMO Y SUBNUCLEOS              -->
+      <!-- ==================================================== -->
+      <!-- Tálamo (óvalo grande) -->
+      <ellipse cx="500" cy="300" rx="80" ry="60" fill="#e0f7fa" stroke="#333" stroke-width="1"></ellipse>
+      <text x="480" y="305" class="label">Tálamo</text>
 
-        <!-- Insula -->
-        <path d="M400,380 Q420,360 440,380 Q420,400 400,380" fill="#c5e1a5" stroke="#333" stroke-width="1"></path>
-        <text x="405" y="380" class="label" font-size="10">Insula</text>
+      <!-- Subnúcleos del Tálamo (simplemente 6 rectángulos alrededor) -->
+      <!-- VPL -->
+      <rect x="460" y="270" width="30" height="20" fill="#ffe0b2" stroke="#333"></rect>
+      <text x="465" y="285" class="label" font-size="10">VPL</text>
+      <!-- VPM -->
+      <rect x="510" y="270" width="30" height="20" fill="#ffe0b2" stroke="#333"></rect>
+      <text x="515" y="285" class="label" font-size="10">VPM</text>
+      <!-- DM -->
+      <rect x="460" y="320" width="30" height="20" fill="#c8e6c9" stroke="#333"></rect>
+      <text x="465" y="335" class="label" font-size="10">DM</text>
+      <!-- Pulvinar -->
+      <rect x="510" y="320" width="40" height="20" fill="#c8e6c9" stroke="#333"></rect>
+      <text x="515" y="335" class="label" font-size="10">Pulv.</text>
+      <!-- VA -->
+      <rect x="445" y="370" width="30" height="20" fill="#bbdefb" stroke="#333"></rect>
+      <text x="450" y="385" class="label" font-size="10">VA</text>
+      <!-- VL -->
+      <rect x="495" y="370" width="30" height="20" fill="#bbdefb" stroke="#333"></rect>
+      <text x="500" y="385" class="label" font-size="10">VL</text>
 
-        <!-- Núcleo Basalis de Meynert -->
-        <ellipse cx="750" cy="450" rx="25" ry="15" fill="#f0f4c3" stroke="#333" stroke-width="1"></ellipse>
-        <text x="735" y="455" class="label" font-size="10">Meynert</text>
+      <!-- ==================================================== -->
+      <!-- COLUMNA 4 (DERECHA): ÁREAS PRIMARIAS                 -->
+      <!-- ==================================================== -->
+      <!-- M. Primaria (B4) -->
+      <rect x="850" y="100" width="120" height="40" class="structure" fill="#fff9c4"/>
+      <text x="860" y="125" class="label">M. Primaria (B4)</text>
 
-        <!-- Núcleos Septales -->
-        <ellipse cx="750" cy="500" rx="20" ry="10" fill="#e1bee7" stroke="#333" stroke-width="1"></ellipse>
-        <text x="740" y="505" class="label" font-size="10">Septal</text>
+      <!-- S. Primaria (B3,1,2) -->
+      <rect x="850" y="200" width="120" height="40" class="structure" fill="#e1f5fe"/>
+      <text x="855" y="225" class="label">S. Primaria (B3,1,2)</text>
 
-        <!-- ============================= -->
-        <!-- 5. AREAS CORTICALES          -->
-        <!-- ============================= -->
-        <!-- Áreas Primarias -->
-        <rect x="900" y="280" width="80" height="40" fill="#fff9c4" stroke="#333"></rect>
-        <text x="905" y="305" class="label" font-size="10">M. Primaria (B4)</text>
+      <!-- V. Primaria (B17) -->
+      <rect x="850" y="300" width="120" height="40" class="structure" fill="#fce4ec"/>
+      <text x="855" y="325" class="label">V. Primaria (B17)</text>
 
-        <rect x="900" y="330" width="80" height="40" fill="#e1f5fe" stroke="#333"></rect>
-        <text x="905" y="355" class="label" font-size="10">S. Primaria (B3,1,2)</text>
+      <!-- A. Primaria (B41/42) -->
+      <rect x="850" y="400" width="120" height="40" class="structure" fill="#f3e5f5"/>
+      <text x="855" y="425" class="label">A. Primaria (B41/42)</text>
 
-        <rect x="900" y="380" width="80" height="40" fill="#fce4ec" stroke="#333"></rect>
-        <text x="905" y="405" class="label" font-size="10">V. Primaria (B17)</text>
+      <!-- ==================================================== -->
+      <!-- FLECHAS DE CONEXIÓN                                  -->
+      <!-- ==================================================== -->
+      <g id="connections">
+        <!-- 1) Flecha sensorial (roja) desde VPL (~475,280) hasta S. Primaria (~850+60, 220) -->
+        <line 
+          x1="475" y1="280" 
+          x2="910" y2="220" 
+          class="arrow-sensorial" />
 
-        <rect x="900" y="430" width="80" height="40" fill="#f3e5f5" stroke="#333"></rect>
-        <text x="905" y="455" class="label" font-size="10">A. Primaria (B41/42)</text>
+        <!-- 2) Flecha motora (azul) desde VA (~460,380) hasta M. Primaria (~850+60, 120) -->
+        <line 
+          x1="460" y1="380" 
+          x2="910" y2="120" 
+          class="arrow-motor" />
 
-        <!-- Áreas Asociativas: Prefrontal, TPO, Límbicas -->
-        <rect x="150" y="200" width="130" height="60" fill="#dcedc8" stroke="#333"></rect>
-        <text x="160" y="230" class="label" font-size="10">Prefrontal (B9,10,46)</text>
+        <!-- 3) Flecha moduladora (verde) Insula (~250,120) => Prefrontal (~50+60, 110) -->
+        <line 
+          x1="280" y1="120" 
+          x2="110" y2="120" 
+          class="arrow-modulator" />
 
-        <rect x="150" y="280" width="130" height="60" fill="#ffecb3" stroke="#333"></rect>
-        <text x="155" y="310" class="label" font-size="10">Temporoparietooccipital</text>
+        <!-- 4) Flecha moduladora (verde) Fornix (~250,220) => Áreas Límbicas (~50+60, 320) -->
+        <line 
+          x1="280" y1="220" 
+          x2="110" y2="320" 
+          class="arrow-modulator" />
 
-        <rect x="150" y="360" width="130" height="60" fill="#d7ccc8" stroke="#333"></rect>
-        <text x="160" y="390" class="label" font-size="10">Áreas Límbicas</text>
+        <!-- 5) Flecha moduladora (verde) Meynert (~250,320) => S. Primaria (~850+60,220) -->
+        <line 
+          x1="280" y1="320" 
+          x2="910" y2="220" 
+          class="arrow-modulator" />
 
-        <!-- ============================= -->
-        <!-- 6. CONEXIONES (FLECHAS)      -->
-        <!-- ============================= -->
-        <g id="connections">
-          <!-- 6.1 Flecha sensorial (rojo) desde VPL (centro aprox x=580,y=380) a S. Primaria (centro aprox x=940,y=350) -->
-          <line 
-            x1="580" y1="380" 
-            x2="940" y2="350" 
-            class="arrow-sensorial" />
+        <!-- 6) Flecha motora (azul) Subtálamo (~250,420) => M. Primaria (~910,120) -->
+        <line 
+          x1="280" y1="420" 
+          x2="910" y2="120" 
+          class="arrow-motor" />
 
-          <!-- 6.2 Flecha motora (azul) desde Subtálamo (x=670,y=300) a M. Primaria (centro aprox x=940,y=300) -->
-          <line 
-            x1="670" y1="300" 
-            x2="940" y2="300" 
-            class="arrow-motor" />
+        <!-- 7) Flecha moduladora (verde) DM (~475,335) => Prefrontal (~110,110) -->
+        <line
+          x1="475" y1="335"
+          x2="110" y2="110"
+          class="arrow-modulator" />
 
-          <!-- 6.3 Flecha moduladora (verde) desde Insula (aprox x=420,y=380) a Prefrontal (centro aprox x=215,y=230) -->
-          <line 
-            x1="420" y1="380" 
-            x2="215" y2="230" 
-            class="arrow-modulator" />
-
-          <!-- 6.4 Flecha moduladora (verde) desde Fornix (aprox x=400,y=430) a Áreas Límbicas (centro aprox x=215,y=390) -->
-          <line 
-            x1="400" y1="430" 
-            x2="215" y2="390" 
-            class="arrow-modulator" />
-        </g>
+        <!-- 8) Flecha moduladora (verde) Pulvinar (~530,335) => TPO (~50+60,220) -->
+        <line
+          x1="530" y1="335"
+          x2="110" y2="220"
+          class="arrow-modulator" />
       </g>
-    </svg>
-  </div>
+    </g>
+  </svg>
+</div>
 
-  <!-- Importar D3.js para habilitar zoom y pan -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script>
-    const svg = d3.select("#brainDiagram");
-    const zoomGroup = d3.select("#zoomGroup");
-
-    const zoom = d3.zoom()
-      .scaleExtent([0.5, 10])   // Permite alejar hasta 0.5x y acercar hasta 10x
-      .on("zoom", (event) => {
-        zoomGroup.attr("transform", event.transform);
-      });
-
-    svg.call(zoom);
-  </script>
+<!-- (Opcional) D3.js para zoom y pan -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  // Habilitar zoom/pan si lo deseas
+  const svg = d3.select("#brainDiagram");
+  const zoomGroup = d3.select("#zoomGroup");
+  const zoom = d3.zoom()
+    .scaleExtent([0.5, 10])
+    .on("zoom", (event) => {
+      zoomGroup.attr("transform", event.transform);
+    });
+  svg.call(zoom);
+</script>
 </body>
 </html>
